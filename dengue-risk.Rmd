@@ -1,5 +1,5 @@
 ---
-title: "Risiko Dengue di Yogyakarta-Sleman-Bantul (Kartamantul) DIY"
+title: "Risiko Dengue di Yogyakarta-Sleman-Bantul DIY dan Kota Bandar Lampung"
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
@@ -19,15 +19,13 @@ library(crosstalk)
 library(plotly)
 
 map <- sf::read_sf("REV/kartamantul_aggregate_allyears.shp")
+mapbl <- sf::read_sf("REV/bandarlampung.shp")
 ```
 
-Tahun 2010 {data-navmenu="Pilih tahun"}
+Tahun 2010 {.storyboard data-navmenu="DI Yogyakarta"}
 =======================================================================
 
-
-Column {data-width=550}
------------------------------------------------------------------------
-### Map - 2010
+### Peta Risiko DBD di Kota Yogyakarta, Kab. Sleman, dan Kab. Bantul DI Yogyakarta Tahun 2010
 
 ```{r}
 pal <- colorFactor(
@@ -48,7 +46,7 @@ map$labels <- paste0(
 
 leaflet(map) %>%
   addTiles() %>%
-  setView(lng = 110.369, lat = -7.802, zoom = 11) %>%
+  setView(lng = 110.369, lat = -7.802, zoom = 12) %>%
   addPolygons(
     fillColor = ~ pal(rs_2010),
     color = "gray",
@@ -67,10 +65,7 @@ leaflet(map) %>%
   )
 ```
 
-Column {data-width=450}
------------------------------------------------------------------------
-
-### Pencarian dengan tabel
+### Pencarian risiko DBD tahun 2010 di tiap wilayah dengan tabel
 
 ```{r}
 tabel <- as.data.frame(map)
@@ -81,14 +76,14 @@ DT::datatable(tabel,
 )
 ```
 
-### Jumlah kasus sepanjang tahun 2010
+### Jumlah kasus DBD sepanjang tahun 2010
 
 ```{r}
 df <- read.csv("REV/caseagg_all_2010.csv")
 df.diy <- crosstalk::SharedData$new(df, ~geo)
 
 p1<-
-   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=200) %>% 
+   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=400) %>% 
     add_lines(name="Jumlah kasus",colors="gray",alpha=0.7) %>% 
     add_lines(name="Jumlah kasus",data=df,x=~DATE,y=~CASE,
               colors="black",color=~geo,alpha=0.1,showlegend=F,hoverinfo="none") %>%
@@ -100,12 +95,12 @@ bscols(
   )
 ```
 
-Tahun 2011 {data-navmenu="Pilih tahun"}
+
+
+Tahun 2011 {.storyboard data-navmenu="DI Yogyakarta"}
 =======================================================================
 
-Column {data-width=550}
------------------------------------------------------------------------
-### Map - 2011
+### Peta Risiko DBD di Kota Yogyakarta, Kab. Sleman, dan Kab. Bantul DI Yogyakarta Tahun 2011
 
 ```{r}
 pal <- colorFactor(
@@ -126,7 +121,7 @@ map$labels <- paste0(
 
 leaflet(map) %>%
   addTiles() %>%
-  setView(lng = 110.369, lat = -7.802, zoom = 11) %>%
+  setView(lng = 110.369, lat = -7.802, zoom = 12) %>%
   addPolygons(
     fillColor = ~ pal(rs_2011),
     color = "gray",
@@ -145,10 +140,7 @@ leaflet(map) %>%
   )
 ```
 
-Column {data-width=450}
------------------------------------------------------------------------
-
-### Pencarian dengan tabel
+### Pencarian risiko DBD tahun 2011 di tiap wilayah dengan tabel
 
 ```{r}
 tabel <- as.data.frame(map)
@@ -159,14 +151,14 @@ DT::datatable(tabel,
 )
 ```
 
-### Jumlah kasus sepanjang tahun 2011
+### Jumlah kasus DBD sepanjang tahun 2011
 
 ```{r}
 df <- read.csv("REV/caseagg_all_2011.csv")
 df.diy <- crosstalk::SharedData$new(df, ~geo)
 
 p1<-
-   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=200) %>% 
+   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=400) %>% 
     add_lines(name="Jumlah kasus",colors="gray",alpha=0.7) %>% 
     add_lines(name="Jumlah kasus",data=df,x=~DATE,y=~CASE,
               colors="black",color=~geo,alpha=0.1,showlegend=F,hoverinfo="none") %>%
@@ -178,12 +170,12 @@ bscols(
   )
 ```
 
-Tahun 2012 {data-navmenu="Pilih tahun"}
+
+
+Tahun 2012 {.storyboard data-navmenu="DI Yogyakarta"}
 =======================================================================
 
-Column {data-width=550}
------------------------------------------------------------------------
-### Map - 2012
+### Peta Risiko DBD di Kota Yogyakarta, Kab. Sleman, dan Kab. Bantul DI Yogyakarta Tahun 2012
 
 ```{r}
 pal <- colorFactor(
@@ -204,7 +196,7 @@ map$labels <- paste0(
 
 leaflet(map) %>%
   addTiles() %>%
-  setView(lng = 110.369, lat = -7.802, zoom = 11) %>%
+  setView(lng = 110.369, lat = -7.802, zoom = 12) %>%
   addPolygons(
     fillColor = ~ pal(rs_2012),
     color = "gray",
@@ -223,10 +215,7 @@ leaflet(map) %>%
   )
 ```
 
-Column {data-width=450}
------------------------------------------------------------------------
-
-### Pencarian dengan tabel
+### Pencarian risiko DBD tahun 2012 di tiap wilayah dengan tabel
 
 ```{r}
 tabel <- as.data.frame(map)
@@ -237,14 +226,14 @@ DT::datatable(tabel,
 )
 ```
 
-### Jumlah kasus sepanjang tahun 2012
+### Jumlah kasus DBD sepanjang tahun 2012
 
 ```{r}
 df <- read.csv("REV/caseagg_all_2012.csv")
 df.diy <- crosstalk::SharedData$new(df, ~geo)
 
 p1<-
-   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=200) %>% 
+   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=400) %>% 
     add_lines(name="Jumlah kasus",colors="gray",alpha=0.7) %>% 
     add_lines(name="Jumlah kasus",data=df,x=~DATE,y=~CASE,
               colors="black",color=~geo,alpha=0.1,showlegend=F,hoverinfo="none") %>%
@@ -256,12 +245,12 @@ bscols(
   )
 ```
 
-Tahun 2013 {data-navmenu="Pilih tahun"}
+
+
+Tahun 2013 {.storyboard data-navmenu="DI Yogyakarta"}
 =======================================================================
 
-Column {data-width=550}
------------------------------------------------------------------------
-### Map - 2013
+### Peta Risiko DBD di Kota Yogyakarta, Kab. Sleman, dan Kab. Bantul DI Yogyakarta Tahun 2013
 
 ```{r}
 pal <- colorFactor(
@@ -282,7 +271,7 @@ map$labels <- paste0(
 
 leaflet(map) %>%
   addTiles() %>%
-  setView(lng = 110.369, lat = -7.802, zoom = 11) %>%
+  setView(lng = 110.369, lat = -7.802, zoom = 12) %>%
   addPolygons(
     fillColor = ~ pal(rs_2013),
     color = "gray",
@@ -301,10 +290,7 @@ leaflet(map) %>%
   )
 ```
 
-Column {data-width=450}
------------------------------------------------------------------------
-
-### Pencarian dengan tabel
+### Pencarian risiko DBD tahun 2013 di tiap wilayah dengan tabel
 
 ```{r}
 tabel <- as.data.frame(map)
@@ -315,14 +301,14 @@ DT::datatable(tabel,
 )
 ```
 
-### Jumlah kasus sepanjang tahun 2013
+### Jumlah kasus DBD sepanjang tahun 2013
 
 ```{r}
 df <- read.csv("REV/caseagg_all_2013.csv")
 df.diy <- crosstalk::SharedData$new(df, ~geo)
 
 p1<-
-   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=200) %>% 
+   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=400) %>% 
     add_lines(name="Jumlah kasus",colors="gray",alpha=0.7) %>% 
     add_lines(name="Jumlah kasus",data=df,x=~DATE,y=~CASE,
               colors="black",color=~geo,alpha=0.1,showlegend=F,hoverinfo="none") %>%
@@ -334,12 +320,12 @@ bscols(
   )
 ```
 
-Tahun 2014 {data-navmenu="Pilih tahun"}
+
+
+Tahun 2014 {.storyboard data-navmenu="DI Yogyakarta"}
 =======================================================================
 
-Column {data-width=550}
------------------------------------------------------------------------
-### Map - 2014
+### Peta Risiko DBD di Kota Yogyakarta, Kab. Sleman, dan Kab. Bantul DI Yogyakarta Tahun 2014
 
 ```{r}
 pal <- colorFactor(
@@ -360,7 +346,7 @@ map$labels <- paste0(
 
 leaflet(map) %>%
   addTiles() %>%
-  setView(lng = 110.369, lat = -7.802, zoom = 11) %>%
+  setView(lng = 110.369, lat = -7.802, zoom = 12) %>%
   addPolygons(
     fillColor = ~ pal(rs_2014),
     color = "gray",
@@ -379,10 +365,7 @@ leaflet(map) %>%
   )
 ```
 
-Column {data-width=450}
------------------------------------------------------------------------
-
-### Pencarian dengan tabel
+### Pencarian risiko DBD tahun 2014 di tiap wilayah dengan tabel
 
 ```{r}
 tabel <- as.data.frame(map)
@@ -393,14 +376,14 @@ DT::datatable(tabel,
 )
 ```
 
-### Jumlah kasus sepanjang tahun 2014
+### Jumlah kasus DBD sepanjang tahun 2014
 
 ```{r}
 df <- read.csv("REV/caseagg_all_2014.csv")
 df.diy <- crosstalk::SharedData$new(df, ~geo)
 
 p1<-
-   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=200) %>% 
+   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=400) %>% 
     add_lines(name="Jumlah kasus",colors="gray",alpha=0.7) %>% 
     add_lines(name="Jumlah kasus",data=df,x=~DATE,y=~CASE,
               colors="black",color=~geo,alpha=0.1,showlegend=F,hoverinfo="none") %>%
@@ -412,12 +395,12 @@ bscols(
   )
 ```
 
-Tahun 2015 {data-navmenu="Pilih tahun"}
+
+
+Tahun 2015 {.storyboard data-navmenu="DI Yogyakarta"}
 =======================================================================
 
-Column {data-width=550}
------------------------------------------------------------------------
-### Map - 2015
+### Peta Risiko DBD di Kota Yogyakarta, Kab. Sleman, dan Kab. Bantul DI Yogyakarta Tahun 2015
 
 ```{r}
 pal <- colorFactor(
@@ -438,7 +421,7 @@ map$labels <- paste0(
 
 leaflet(map) %>%
   addTiles() %>%
-  setView(lng = 110.369, lat = -7.802, zoom = 11) %>%
+  setView(lng = 110.369, lat = -7.802, zoom = 12) %>%
   addPolygons(
     fillColor = ~ pal(rs_2015),
     color = "gray",
@@ -457,10 +440,7 @@ leaflet(map) %>%
   )
 ```
 
-Column {data-width=450}
------------------------------------------------------------------------
-
-### Pencarian dengan tabel
+### Pencarian risiko DBD tahun 2015 di tiap wilayah dengan tabel
 
 ```{r}
 tabel <- as.data.frame(map)
@@ -471,14 +451,14 @@ DT::datatable(tabel,
 )
 ```
 
-### Jumlah kasus sepanjang tahun 2015
+### Jumlah kasus DBD sepanjang tahun 2015
 
 ```{r}
 df <- read.csv("REV/caseagg_all_2015.csv")
 df.diy <- crosstalk::SharedData$new(df, ~geo)
 
 p1<-
-   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=200) %>% 
+   plot_ly(data=df.diy,x = ~DATE, y = ~CASE, height=400) %>% 
     add_lines(name="Jumlah kasus",colors="gray",alpha=0.7) %>% 
     add_lines(name="Jumlah kasus",data=df,x=~DATE,y=~CASE,
               colors="black",color=~geo,alpha=0.1,showlegend=F,hoverinfo="none") %>%
@@ -489,3 +469,42 @@ bscols(
   subplot(p1,titleY=T)
   )
 ```
+
+
+
+
+
+Tahun 2010 {.storyboard data-navmenu="Bandar Lampung"}
+=======================================================================
+
+### Peta Risiko DBD di Kota Bandar Lampung Tahun 2010 (Under Construction)
+
+```{r}
+
+mapbl$labels <- paste0(
+  "<strong> Kabupaten/Kota: </strong> ",
+  mapbl$ADM2_EN, "<br/> ",
+  "<strong> Kecamatan: </strong> ",
+  mapbl$ADM3_EN, "<br/> ",
+  "<strong> Desa/Kelurahan: </strong> ",
+  mapbl$ADM4_EN, "<br/> "
+) %>%
+  lapply(htmltools::HTML)
+
+leaflet(mapbl) %>%
+  addTiles() %>%
+  setView(lng = 105.26, lat = -5.405, zoom = 12) %>%
+  addPolygons(
+    fillColor = "white",
+    color = "gray",
+    weight = 1,
+    fillOpacity = 0.6,
+    label = ~labels,
+    highlight = highlightOptions(
+      color = "red",
+      weight = 3,
+      bringToFront = TRUE
+    )
+  )
+```
+
